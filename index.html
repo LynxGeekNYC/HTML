@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic HTML Loading</title>
+</head>
+<body>
+
+<!-- Placeholder for dynamically loaded content -->
+<div id="dynamicContent"></div>
+
+<script>
+    // Function to load HTML content dynamically
+    function loadHTMLContent() {
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Specify the HTML file to load
+        xhr.open('GET', 'path/to/your/file.html', true);
+
+        // Set the callback function to handle the response
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Inject the HTML content into the specified div
+                document.getElementById('dynamicContent').innerHTML = xhr.responseText;
+            }
+        };
+
+        // Send the request
+        xhr.send();
+    }
+
+    // Call the function to load HTML content on page load
+    window.onload = function () {
+        loadHTMLContent();
+    };
+</script>
+
+</body>
+</html>
